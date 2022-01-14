@@ -1,0 +1,19 @@
+h1{
+	font-size: 60px;
+	color: darkblue;
+}
+
+body{
+	background: #f4f4f4;
+}
+.center{
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+
+}
+#demo{
+	font-size: 42px;
+	color:  darkblue;
+
+}

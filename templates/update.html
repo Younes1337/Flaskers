@@ -1,0 +1,59 @@
+{% extends 'based.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+     Hey {{name}} - {{message}}
+ </div>
+
+
+    
+{% endfor %}
+
+{%if name%}
+    <h1>Update User!</h1>
+    <br></br>
+<table class="table table-hover 
+             table-bordered 
+             table-striped"> 
+     
+      {% for our_user in our_users %}
+       <tr>   
+       <td>{{our_user.id}}.{{ our_user.name}} - {{our_user.email}} - {{our_user.favorite_color}}</td>
+       </tr>  
+
+{% endfor%} 
+</table>
+<br/>
+    
+
+{% else %}
+    <h1>Update User ...</h1>
+    <br/>
+<div class="shadow p-3 mb-5 bg-body rounded">  
+    <form action = "/update/{{ name_to_update.id}}" method = "POST">
+          {{ form.hidden_tag()}}
+
+          {{ form.name.label( class="form-label")}}
+          {{form.name(class="form-control", value = name_to_update.name)}}
+          <br/>
+          {{ form.email.label( class="form-label")}}
+          {{form.email(class="form-control", value = name_to_update.email)}}
+          <br/>
+
+          {{ form.favorite_color.label( class="form-label")}}
+          {{form.favorite_color(class="form-control", value = name_to_update.favorite_color)}}
+
+          <br/>
+
+          {{ form.submit(class="btn btn-secondary")}}
+          <a href="{{url_for('delete', id = id)}}" class = "btn btn-secondary">Delete</a>
+
+     </form>         
+ 
+<br></br>
+</div> 
+
+{% endif %}     
+{% endblock %}

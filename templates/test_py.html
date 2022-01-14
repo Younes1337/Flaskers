@@ -1,0 +1,42 @@
+{% extends 'based.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+     Hey {{name}} - {{message}}
+ </div>
+
+
+    
+{% endfor %}
+
+{%if email%}
+    <h1>Email :{{email}} !!</h1>
+    <h1>Password : {{password}}</h1>
+    <br/>
+    <h2>I found this Information : </h2>
+     Name : {{pw_to_check.name}}<br/>
+     Email : {{pw_to_check.email}}<br/>
+     Pw : {{pw_to_check.password_hash}}<br/>     
+    
+{% else %}
+    <h1>What's Your Email & password!</h1>
+    <br/>
+    <form method = "POST">
+          {{ form.hidden_tag()}}
+          {{ form.email.label( class="form-label")}}
+          {{form.email(class="form-control")}}
+          <br/>
+          {{form.password_hash.label( class="form-label")}}
+          {{form.password_hash(class="form-control")}}
+           
+          <br/> 
+          {{ form.submit(class="btn btn-secondary")}}
+          <br/>
+
+     </form>         
+   
+	
+{% endif %}     
+{% endblock %}
