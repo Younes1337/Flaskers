@@ -279,9 +279,3 @@ def test_pw():
         password = password, 
         pw_to_check = pw_to_check, 
         form= form)    
-
-
-
-
-
-
